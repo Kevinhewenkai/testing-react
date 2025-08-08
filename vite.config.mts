@@ -8,5 +8,6 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vite.setup.ts"],
     exclude: ["node_modules", "dist", "e2e"],
+    include: ["**/*.{test,spec}.{js,ts,jsx,tsx}"],
   },
 });
