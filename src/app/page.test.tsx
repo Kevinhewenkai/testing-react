@@ -1,11 +1,17 @@
-import { it, describe, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import Home from "./page";
+import { vi } from "vitest";
+import React from "react";
 
-describe("home page", () => {
-  it("should render page", () => {
-    render(<Home />);
-    expect(screen.getByText("page")).toBeInTheDocument();
+// Mock the HomePage component
+vi.mock("@/features/HomePage", () => ({
+  HomePage: () => <div>Mocked HomePage</div>,
+}));
+
+describe("Home component", () => {
+  it("should render the HomePage component", async () => {
+    render(await Home());
+    const homePage = await screen.findByText("Mocked HomePage");
+    expect(homePage).toBeInTheDocument();
   });
 });
